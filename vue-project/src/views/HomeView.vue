@@ -1,10 +1,7 @@
 <script setup>
-import SearchCity from '../components/SearchCity.vue'
+import ListCities from '../components/ListCities.vue'
 </script>
 
 <template>
-<div>
-  oiii
-   <SearchCity />
-</div>
+   <ListCities />
 </template>

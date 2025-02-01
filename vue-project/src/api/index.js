@@ -1,0 +1,1 @@
+export * as cptec from './cptecApi'
