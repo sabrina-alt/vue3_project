@@ -1,1 +1,1 @@
-export * as cptec from './cptecApi'
+export * as weather from './weather'

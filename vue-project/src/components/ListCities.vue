@@ -1,38 +1,18 @@
 <template>
+  <div>
     <v-card 
       class="pa-4"
       variant="plan"
+      width="1500px"
     >
-    <v-row>
-      <v-col>
-        <span class="text-h3">
-          Selecione a Cidade para mais Informações
-        </span>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-combobox
-        label="Busque pela Cidade"
-        v-model="selectedCity"
-        :items="allCities"
-        item-title="nome"
-        item-value="id"
-      />
-      </v-col>
-    </v-row>
-    <SelectedCityInfo 
-      :selectedCity="selectedCity"
-    />
+    oi
     </v-card>
+  </div>
 </template>
 <script>
-import { cptec } from '@/api'
-import SelectedCityInfo from './SelectedCityInfo.vue'
+import { weather } from '@/api'
+
 export default {
-  components: {
-    SelectedCityInfo
-  },
   data () {
     return {
       allCities: [],
@@ -40,12 +20,32 @@ export default {
     }
   },
   async created () {
-    await this.listCities()
+    console.log(`caiu aqui created`)
+    this.getGeolocation()
   },
   methods: {
-    async listCities () {
+    getGeolocation () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude
+            const lon = position.coords.longitude
+            this.getWeather({ lat, lon })
+          },
+          (err) => {
+            err.value = 'Permissão de localização negada'
+            console.error(err);
+          }
+        )
+      } else {
+        error.value = 'Geolocalização não suportada'
+      }
+    },
+    async getWeather (params) {
+      console.log(params)
       try {
-        const res = await cptec.listAllCities()
+        const res = await weather.currentWeather(params)
+        console.log(res.data)
         this.allCities = res.data
       } catch (error) {
         console.log(error)

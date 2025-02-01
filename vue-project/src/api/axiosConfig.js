@@ -1,9 +1,13 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'https://brasilapi.com.br/api/cptec/v1/',
-    timeout: 10000,
-})
+  baseURL: 'http://localhost:3000/',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
+  
 
 // axiosInstance.interceptors.request.use(
 //     (config) => {

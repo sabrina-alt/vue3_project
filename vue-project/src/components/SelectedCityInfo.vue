@@ -1,7 +1,10 @@
 <template>
     <v-row>
         <v-col>
-            Nome: {{ selectedCity.nome }}
+            <span class="text-h3">
+                {{ selectedCity.nome }}
+            </span>
+            <Icon :path="icon"/>
         </v-col>
         <v-col>
             ID: {{ selectedCity.id  }}
@@ -13,13 +16,18 @@
     </v-row>
 </template>
 <script>
-import { cptec } from '@/api'
+import { weather } from '@/api'
+import { mdiWeatherHazy } from '@mdi/js'
+import Icon from '@/globals/Icon.vue'
 export default {
     props: {
         selectedCity: {
             type: Object,
             default: () => ({})
         }
+    },
+    components: {
+        Icon
     },
     watch: {
         selectedCity (value) {
@@ -30,13 +38,14 @@ export default {
     },
     data () {
         return {
-            weatherInfo: []
+            weatherInfo: [],
+            icon: mdiWeatherHazy
         }
     },
     methods: {
         async getWeatherForecast () {
             try {
-                const res = await cptec.getWeatherForecast(this.selectedCity.id)
+                const res = await weather.getWeatherForecast(this.selectedCity.id)
                 this.weatherInfo = res.data
             } catch (error) {
                 console.log(error)
