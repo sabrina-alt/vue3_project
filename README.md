@@ -4,6 +4,7 @@
 
 Página para consulta do clima atual, construido em Vue.JS 3 e estilizado com Vuetify. 
 Para gerenciamento de rotas foi utilizado vue-router e para chamadas da api o Axios. 
+A Api foi fornecida por openweathermap.org
 
 ## Para rodar o projeto
 Primeiro faça download da pasta do projeto e execute:
