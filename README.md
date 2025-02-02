@@ -1,4 +1,4 @@
-# vue3_project
+# Weather 
 
 ![Captura de Tela 2025-02-02 às 09 37 20](https://github.com/user-attachments/assets/e29444c9-3396-4a68-bfda-9cec81ee0812)
 
