@@ -3,16 +3,12 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <v-app>
-    <v-main>
-      <v-container>
-        <router-view />
-      </v-container>
-    </v-main>
-  </v-app>
+  <v-container class="d-flex justify-center align-center" fluid>
+    <router-view />
+  </v-container>
 </template>
 <style>
-html, body, #app {
+html, body {
   height: 100%;
   width: 100%;
   margin: 0;

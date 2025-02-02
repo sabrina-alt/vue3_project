@@ -10,7 +10,7 @@ app.use(cors());
 
 const fetchWeatherData = async (endpoint, lat, lon) => {
     try {
-        const url = `https://api.openweathermap.org/data/2.5/${endpoint}?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+        const url = `https://api.openweathermap.org/data/2.5/${endpoint}?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=pt_br`
         const response = await axios.get(url)
         return response.data
     } catch (err) {
